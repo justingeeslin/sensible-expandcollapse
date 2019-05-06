@@ -1,7 +1,11 @@
 describe('ExpandCollapse', function() {
 
-    var myExpandCollapse = new sensible.classes.ExpandCollapse();
-    var myExpandCollapse2 = new sensible.classes.ExpandCollapse({slug: 'untitled2'});
+    var myExpandCollapse = new sensible.classes.ExpandCollapse({
+      url: '#!section/article#fragment'
+    });
+    var myExpandCollapse2 = new sensible.classes.ExpandCollapse({
+      slug: 'untitled2'
+    });
 
     $(document.body).append(myExpandCollapse.el);
     $(document.body).append(myExpandCollapse2.el);
@@ -14,7 +18,9 @@ describe('ExpandCollapse', function() {
     }
 
     it('Should exist and be named Untitled', function() {
-        expect(theQuestion.attr('href')).toBe('#untitled')
+      expect(theQuestion.attr('id')).toBe('section-article_fragment', "Id cannot contain hashes")
+      expect(theQuestion.attr('href')).toBe('#!section/article#fragment', "HREF should look as intended.")
+
     });
 
 		it('should show content on click.', function() {

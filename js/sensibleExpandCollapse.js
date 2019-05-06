@@ -13,9 +13,14 @@ var ExpandCollapse = function (opts) {
 
 	this.id = this.url.split('/').join('-');
 
+	// Replace the hash bang
+	this.id = this.id.replace('#!', '');
+	// Remove the hash from the id
+	this.id = this.id.replace(/#/g, '_');
+
 	this.el = $('<div></div>');
 	this.el.addClass(this.classes);
-	this.el.append('<a href="#' + this.url + '" id="' + this.id + '">' + this.title + '</a>');
+	this.el.append('<a href="' + this.url + '" id="' + this.id + '">' + this.title + '</a>');
 	var answer = $('<div style="display:none;">' + this.content + '</div>');
 	this.el.append(answer);
 
